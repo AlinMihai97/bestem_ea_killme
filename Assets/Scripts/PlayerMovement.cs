@@ -22,40 +22,51 @@ public class PlayerMovement : MonoBehaviour {
     const string groundnAnimator = "isGrounded";
     const string vSpeedAnimator = "vSpeed";
 
-	// Use this for initialization
-	void Start ()
+    PlayerController playerCon;
+
+    // Use this for initialization
+    private void Awake()
+    {
+        playerCon = GetComponent<PlayerController>();
+    }
+
+    void Start ()
     {
         anim = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+       // playerCon = GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate  () {
-
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-
-        anim.SetBool(groundnAnimator, grounded);
-        anim.SetFloat(vSpeedAnimator, rigidbody2D.velocity.y);
-
-        float direction = Input.GetAxis("Horizontal") * speed;
-        if (facingRight && direction < 0)
+        if(playerCon.IsFocused)
         {
-            Flip();
-        }
-        if(!facingRight && direction > 0)
-        {
-            Flip();
-        }
+            grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
-        anim.SetFloat(speedAnimator, Mathf.Abs(direction));
-        rigidbody2D.velocity = new Vector2(direction, rigidbody2D.velocity.y); //Vector2.right * direction;
-        background.updateBackgroundPosition(direction, transform.position);
+            anim.SetBool(groundnAnimator, grounded);
+            anim.SetFloat(vSpeedAnimator, rigidbody2D.velocity.y);
+
+            float direction = Input.GetAxis("Horizontal") * speed;
+            if (facingRight && direction < 0)
+            {
+                Flip();
+            }
+            if (!facingRight && direction > 0)
+            {
+                Flip();
+            }
+
+            anim.SetFloat(speedAnimator, Mathf.Abs(direction));
+            rigidbody2D.velocity = new Vector2(direction, rigidbody2D.velocity.y);
+            background.updateBackgroundPosition(direction, transform.position);
+
+        }
 
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Jump") && grounded)
+        if(Input.GetButtonDown("Jump") && grounded && playerCon.IsFocused)
         {
             anim.SetBool(groundnAnimator, false);
             rigidbody2D.AddForce(Vector2.up * jumpForce);
@@ -69,5 +80,15 @@ public class PlayerMovement : MonoBehaviour {
         scale.x = -scale.x;
         transform.localScale = scale;
         facingRight = !facingRight;
+    }
+
+    public void unFocus()
+    {
+        playerCon.IsFocused = false;
+    }
+
+    public void setAsFocus()
+    {
+        playerCon.IsFocused = true;
     }
 }
