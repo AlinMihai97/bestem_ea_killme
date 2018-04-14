@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
     Animator animator;
     Rigidbody2D rigidbody2D;
+    public BackgroundParallax background;
     bool facingRight = true;
 
     const string speedAnimator = "speed";
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,9 @@ public class PlayerMovement : MonoBehaviour {
 
         animator.SetFloat(speedAnimator, Mathf.Abs(direction));
         rigidbody2D.velocity = Vector2.right * direction;
-	}
+        background.updateBackgroundPosition(direction, transform.position);
+
+    }
 
     void Flip()
     {
