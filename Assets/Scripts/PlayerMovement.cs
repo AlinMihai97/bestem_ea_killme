@@ -18,8 +18,8 @@ public class PlayerMovement : MonoBehaviour {
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
 
-    const string speedAnimator = "speed";
-    const string groundnAnimator = "isGrounded";
+    const string speedAnimator = "Speed";
+    const string groundnAnimator = "Ground";
     const string vSpeedAnimator = "vSpeed";
 
     PlayerController playerCon;

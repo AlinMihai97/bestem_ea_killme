@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour {
 
     bool isDead;
     bool isFocused;
+    bool isZombie;
+
+    SpriteRenderer sp;
+
+    public Color zombiColor;
+    public Color aliveColor;
 
     public bool IsFocused
     {
@@ -18,13 +24,49 @@ public class PlayerController : MonoBehaviour {
     private void Start()
     {
         anim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
+        isZombie = false;
         Revive();
     }
 
     void Die()
     {
-        isDead = true;
+        StartCoroutine(ChangeColor());
         UpdateAnim();
+
+    }
+
+    IEnumerator ChangeColor()
+    {
+        float nrSeconds = 2;
+        float journy = 0;
+        bool changeFocus = false;
+        if (isFocused)
+        {
+            changeFocus = true;
+            isFocused = false;
+        }
+        while (journy < 1)
+        {
+            journy += Time.deltaTime / nrSeconds;
+            Debug.Log(journy);
+            if (isZombie)
+            {
+                sp.color = Color.Lerp(aliveColor, zombiColor, journy);
+            }
+            else
+            {
+                sp.color = Color.Lerp(zombiColor, aliveColor, journy);
+            }
+
+            yield return null;
+        }
+        if (changeFocus)
+        {
+            isFocused = true;
+        }
+        isZombie = !isZombie;
+        Debug.Log("A iesit");
     }
 
     void UpdateAnim()
@@ -46,11 +88,6 @@ public class PlayerController : MonoBehaviour {
             {
                 Die();
                 anim.SetTrigger("Die");
-            }
-            if (Input.GetButtonDown("Fire3") && isDead)
-            {
-                Revive();
-                anim.SetTrigger("Revive");
             }
         }
     }

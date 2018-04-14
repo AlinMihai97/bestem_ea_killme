@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class MoveCamera : MonoBehaviour {
 
 
     public Transform target;
-    Vector3 offset = new Vector3(0, 0, -5);
+    public Vector3 offset = new Vector3(0, 0, -5);
     bool inAnim = false;
-    float cameraSpeed = 8.0f;
-    PlayerMovement player_to_move;
+    public float cameraSpeed = 8.0f;
+    PlatformerCharacter2D player_to_move;
+
+    private float startTime;
+    private float journyLength;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,9 +28,9 @@ public class MoveCamera : MonoBehaviour {
         }
         else
         {
-            Debug.Log("ceva");
+            //transform.position = Vector3.Lerp(transform.position, target.position + offset, (Time.time - startTime) * cameraSpeed / journyLength);
             transform.position = Vector3.MoveTowards(transform.position, target.position + offset, cameraSpeed * Time.deltaTime);
-            if(Vector3.Distance(transform.position, target.position + offset) < 0.1)
+            if(Vector3.Distance(transform.position, target.position + offset) < 0.01)
             {
                 changeTarget(target);
             }
@@ -38,13 +43,15 @@ public class MoveCamera : MonoBehaviour {
         target = newTarget;
         player_to_move.setAsFocus();
     }
-    public void changeTargetAnim(Transform newTarget, PlayerMovement move)
+    public void changeTargetAnim(Transform newTarget, PlatformerCharacter2D move)
     {
         target = newTarget;
         SetPlayerScript(move);
+        startTime = Time.deltaTime;
+        journyLength = Vector3.Distance(transform.position, target.position);
         inAnim = true;
     }
-    public void SetPlayerScript(PlayerMovement move)
+    public void SetPlayerScript(PlatformerCharacter2D move)
     {
         player_to_move = move;
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class MainScript : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class MainScript : MonoBehaviour {
 
 	void Start () {
         current_player = 0;
-        PlayerMovement current = playerList[current_player].GetComponent<PlayerMovement>();
+        PlatformerCharacter2D current = playerList[current_player].GetComponent<PlatformerCharacter2D>();
         //current.setAsFocus();
 
         MoveCamera cameraMovement = camera.GetComponent<MoveCamera>();
@@ -23,12 +24,12 @@ public class MainScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.P))
+		if(Input.GetKeyDown(KeyCode.P))
         {
-            PlayerMovement old = playerList[current_player].GetComponent<PlayerMovement>();
+            PlatformerCharacter2D old = playerList[current_player].GetComponent<PlatformerCharacter2D>();
             old.unFocus();
             current_player = (current_player + 1) % playerList.Count;
-            PlayerMovement current = playerList[current_player].GetComponent<PlayerMovement>();
+            PlatformerCharacter2D current = playerList[current_player].GetComponent<PlatformerCharacter2D>();
             MoveCamera cameraMovement = camera.GetComponent<MoveCamera>();
             cameraMovement.changeTargetAnim(playerList[current_player].GetComponent<Transform>(),current);
         }
