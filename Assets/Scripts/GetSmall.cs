@@ -1,22 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class GetSmall : MonoBehaviour {
 
     bool startAnimUp = false;
     bool startAnimDown = false;
-    float number_seconds = 5;
+    float number_seconds = 4f;
     float seconds_counter = 0;
     ParticleSystem particleSys;
     // Use this for initialization
+
+    Platformer2DUserControl user;
+
     void Start () {
-        particleSys = GetComponent<ParticleSystem>();   
+        particleSys = GetComponent<ParticleSystem>();
+        user = GetComponent<Platformer2DUserControl>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.R) && !startAnimUp && !startAnimUp)
+        if (EndGame.instance.isGameOver)
+            return;
+		if(Input.GetKeyDown(KeyCode.R) && !startAnimUp && !startAnimUp && user.IsFocused && user.IsZombie)
         {
             startAnimDown = true;
             seconds_counter = 0;
@@ -49,7 +56,7 @@ public class GetSmall : MonoBehaviour {
             if (seconds_counter < 3)
             {
                 seconds_counter += Time.deltaTime;
-                if (transform.localScale.x < 1)
+                if (transform.localScale.x < 1 && transform.localScale.y < 1 && transform.localScale.z < 1)
                 {
                     transform.localScale += new Vector3(
                         0.01f * Mathf.Sign(transform.localScale.x),

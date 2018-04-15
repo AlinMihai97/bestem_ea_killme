@@ -9,7 +9,7 @@ public class MoveCamera : MonoBehaviour {
     public Transform target;
     public Vector3 offset = new Vector3(0, 0, -5);
     bool inAnim = false;
-    public float cameraSpeed = 8.0f;
+    public float timeLenght = 3.0f;
     PlatformerCharacter2D player_to_move;
 
     private float startTime;
@@ -28,8 +28,8 @@ public class MoveCamera : MonoBehaviour {
         }
         else
         {
-            //transform.position = Vector3.Lerp(transform.position, target.position + offset, (Time.time - startTime) * cameraSpeed / journyLength);
-            transform.position = Vector3.MoveTowards(transform.position, target.position + offset, cameraSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, (Time.time - startTime) / timeLenght);
+            //transform.position = Vector3.MoveTowards(transform.position, target.position + offset, cameraSpeed * Time.deltaTime);
             if(Vector3.Distance(transform.position, target.position + offset) < 0.01)
             {
                 changeTarget(target);
@@ -47,7 +47,7 @@ public class MoveCamera : MonoBehaviour {
     {
         target = newTarget;
         SetPlayerScript(move);
-        startTime = Time.deltaTime;
+        startTime = Time.time;
         journyLength = Vector3.Distance(transform.position, target.position);
         inAnim = true;
     }
