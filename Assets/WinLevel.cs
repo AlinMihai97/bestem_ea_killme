@@ -56,6 +56,15 @@ public class WinLevel : MonoBehaviour {
         finish.a = 1;
         float startTime = Time.time;
         float diff = Time.time - startTime;
+        try
+        {
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
+        }
+        catch (System.Exception)
+        {
+
+        }
         while(diff < dimScreenTime)
         {
             diff = Time.time - startTime;
