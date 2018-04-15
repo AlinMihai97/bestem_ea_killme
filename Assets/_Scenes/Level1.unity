@@ -157,6 +157,26 @@ Prefab:
       propertyPath: nextLevelName
       value: Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 4602239925975470, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -13.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197500270886042, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 27.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602239925975470, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550909995858020, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550909995858020, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.57
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adaa8e4cedac55f4fb9a9cefa7688175, type: 2}
   m_IsPrefabParent: 0
@@ -169,7 +189,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.388074
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -203,6 +223,10 @@ Prefab:
       propertyPath: m_Name
       value: dark_bricks (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
   m_IsPrefabParent: 0
@@ -215,7 +239,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.388074
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -248,6 +272,10 @@ Prefab:
     - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_Name
       value: dark_bricks (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
@@ -303,7 +331,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.388074
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -332,6 +360,10 @@ Prefab:
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
@@ -387,7 +419,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.388074
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4403890166024506, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -420,6 +452,10 @@ Prefab:
     - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
       propertyPath: m_Name
       value: dark_bricks (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387939984587164, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17919f42814ba28438862b9b0e93afcb, type: 2}

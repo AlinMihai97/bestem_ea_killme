@@ -27,7 +27,7 @@ public class EndGame : MonoBehaviour {
         gameOverGameObject.SetActive(true);
         StartCoroutine(ShowGameOverText());
         StartCoroutine(ShowGameOverImage());
-        StartCoroutine(WaitForKey());
+        
     }
 
     IEnumerator WaitForKey()
@@ -52,6 +52,7 @@ public class EndGame : MonoBehaviour {
             gameOverText.fontSize = (int)Mathf.Lerp(1, 60, diff / dimScreenTime);
             yield return null;
         }
+        StartCoroutine(WaitForKey());
     }
 
     IEnumerator ShowGameOverImage()

@@ -86,7 +86,7 @@ public class Platformer2DUserControl : MonoBehaviour
         float nrSeconds = 2;
         float journy = 0;
         bool changeFocus = false;
-       
+        isZombie = !isZombie;
         if (isFocused)
         {
             changeFocus = true;
@@ -95,7 +95,7 @@ public class Platformer2DUserControl : MonoBehaviour
         while (journy < 1)
         {
             journy += Time.deltaTime / nrSeconds;
-            if (isZombie)
+            if (!isZombie)
             {
                 sp.color = Color.Lerp(aliveColor, zombiColor, journy);
             }
@@ -110,7 +110,7 @@ public class Platformer2DUserControl : MonoBehaviour
         {
             isFocused = true;
         }
-        isZombie = !isZombie;
+       
         if (isZombie)
         {
             StartCoroutine(ReviveBack());
@@ -149,10 +149,10 @@ public class Platformer2DUserControl : MonoBehaviour
             // Read the jump input in Update so button presses aren't missed.
             m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
         }
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Die(false);
-        }
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+        //    Die(false);
+        //}
     }
 
 
